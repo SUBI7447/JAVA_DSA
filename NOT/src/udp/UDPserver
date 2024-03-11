@@ -1,0 +1,48 @@
+package practice2;
+import java.net.*;
+import java.util.Scanner;
+public class UDPserver {
+
+	
+	public static void main (String args[ ]) throws Exception {
+		System.out.println("Server class is running");
+		
+		DatagramSocket servers = new DatagramSocket(5003);
+		
+		Scanner sc = new Scanner(System.in);
+		
+		while (true) {
+			
+			byte[ ] senderrecieve = new byte[1024];
+			byte [ ] sendersend = new byte [1024];
+			
+			DatagramPacket senderr = new DatagramPacket (senderrecieve, senderrecieve.length);
+			servers.receive(senderr);
+			
+			InetAddress ip = senderr.getAddress();
+			int port_no = senderr.getPort();
+			
+			String data_send_by_client = new String(senderr.getData());
+			System.out.println("Client Data received by server : " + data_send_by_client);
+			System.out.println("Enter reply from server : ");
+			String server_reply = sc.nextLine();
+			sendersend = server_reply.getBytes();
+			DatagramPacket server_reply_packet = new DatagramPacket (sendersend, sendersend.length, ip, port_no);
+			servers.send(server_reply_packet);
+			if(server_reply.equalsIgnoreCase("bye")) {
+				System.out.println("Connection terminated by server");
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+}

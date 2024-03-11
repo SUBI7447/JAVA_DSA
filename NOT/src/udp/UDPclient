@@ -1,0 +1,54 @@
+
+
+
+package practice2;
+
+
+import java.net.*;
+import java.util.Scanner;
+
+public class UDPclient {
+	
+public static void main(String args[ ])	throws Exception{
+	System.out.println("Client class is running");
+	Scanner s = new Scanner(System.in);
+	InetAddress Ip = InetAddress.getByName("localhost");
+	
+	DatagramSocket clients = new DatagramSocket();
+	
+	while(true) {
+		
+		byte[ ] sendclient = new byte[1024];
+		byte[ ] recieveclient = new byte[1024];
+		
+		System.out.println("Enter client data to be send : ");
+		String clientinput = s.nextLine();
+		sendclient = clientinput.getBytes();
+		DatagramPacket pkt = new DatagramPacket(sendclient, sendclient.length, Ip, 5003);
+		clients.send(pkt);
+		
+		if(clientinput.equalsIgnoreCase("Bye")) {
+			System.out.println("Connection terminated by client");
+			break;
+		}
+		
+		DatagramPacket recieved = new DatagramPacket (recieveclient, recieveclient.length);
+		clients.receive(recieved);
+String serverdata = new String(recieved.getData());
+System.out.println("Server side message recieved : " + serverdata);
+	}
+	clients.close();
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+	
+	
+}
