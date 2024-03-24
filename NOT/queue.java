@@ -2,7 +2,7 @@ public class queue {
 
     static class que {
 
-        int que[] = new int[10];
+        static int que[] = new int[10];
 
         public static void add(int val) {
 
@@ -27,7 +27,7 @@ public class queue {
         }
 
         public static boolean is_emp() {
-            return rear == -1 ;
+            return rear == -1;
         }
 
     }
