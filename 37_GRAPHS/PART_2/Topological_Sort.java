@@ -28,15 +28,14 @@ public class Topological_Sort {
             graph[i] = new ArrayList<>();
         }
 
-        graph[2].add(new Edge(2, 3, 1));
+        graph[0].add(new Edge(0, 2, 1));
+        graph[0].add(new Edge(0, 3, 1));
 
-        graph[3].add(new Edge(3, 1, 1));
+        graph[1].add(new Edge(1, 0, 1));
 
-        graph[4].add(new Edge(4, 0, 1));
-        graph[4].add(new Edge(4, 1, 1));
+        graph[2].add(new Edge(2, 1, 1));
 
-        graph[5].add(new Edge(5, 0, 1));
-        graph[5].add(new Edge(5, 2, 1));
+        graph[3].add(new Edge(3, 4, 1));
 
     }
 
@@ -65,16 +64,19 @@ public class Topological_Sort {
 
             if (!visited[graph[curr].get(i).dest]) {
 
+                System.out.println("going " + graph[curr].get(i).dest);
+
                 T_Sort_Util(graph, graph[curr].get(i).dest, visited, st);
             }
 
         }
+        System.out.println("add " + curr);
         st.add(curr);
     }
 
     public static void main(String[] args) {
 
-        int V = 6;
+        int V = 5;
 
         ArrayList<Edge> graph[] = new ArrayList[V];
 
