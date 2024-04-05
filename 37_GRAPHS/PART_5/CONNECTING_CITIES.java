@@ -1,3 +1,5 @@
+package PART_5;
+
 
 // Find the minimum cost for connecting all cities on the map.
 

@@ -1,3 +1,5 @@
+package PART_5;
+
 public class Disjoint_Set {
 
     static int n = 7;
