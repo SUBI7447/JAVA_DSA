@@ -1,20 +1,20 @@
 public class trapped_water {
 
-    public static void t_w(int arr[]) {
+    public static void t_w(int height[]) {
 
         int ans = 0;
 
-        int l_m_b[] = new int[arr.length];
-        int r_m_b[] = new int[arr.length];
+        int l_m_b[] = new int[height.length];
+        int r_m_b[] = new int[height.length];
 
-        int l_m = arr[0];
+        int l_m = height[0];
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < height.length; i++) {
 
-            if (arr[i] >= l_m) {
+            if (height[i] >= l_m) {
 
-                l_m_b[i] = arr[i];
-                l_m = arr[i];
+                l_m_b[i] = height[i];
+                l_m = height[i];
 
             } else {
 
@@ -23,14 +23,14 @@ public class trapped_water {
             }
         }
 
-        int r_m = arr[arr.length - 1];
+        int r_m = height[height.length - 1];
 
-        for (int i = arr.length - 1; i >= 0; i--) {
+        for (int i = height.length - 1; i >= 0; i--) {
 
-            if (arr[i] >= r_m) {
+            if (height[i] >= r_m) {
 
-                r_m_b[i] = arr[i];
-                r_m = arr[i];
+                r_m_b[i] = height[i];
+                r_m = height[i];
 
             } else {
 
@@ -54,7 +54,7 @@ public class trapped_water {
 
         for (int i = 1; i < r_m_b.length - 1; i++) {
 
-            ans = ans + Math.min(l_m_b[i], r_m_b[i]) - arr[i];
+            ans = ans + Math.min(l_m_b[i], r_m_b[i]) - height[i];
 
         }
 
@@ -64,9 +64,9 @@ public class trapped_water {
 
     public static void main(String args[]) {
 
-        int arr[] = { 4, 2, 0, 6, 3, 2, 5 };
+        int height[] = {4,2,0,3,2,5};
 
-        t_w(arr);
+        t_w(height);
 
     }
 
